@@ -32,5 +32,9 @@ public class ConfigurationPropertiesDemo {
      * 地址
      */
     private String phone;
+    /**
+     * 年龄
+     */
+    private int age;
 
 }
