@@ -9,6 +9,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 /**
  * 使用gradle构建项目
  * 启用异步调用：@EnableAsync
+ * 启用定时任务：@EnableScheduling
  * @author zhangchuan
  * @date 2020-09-09
  */
