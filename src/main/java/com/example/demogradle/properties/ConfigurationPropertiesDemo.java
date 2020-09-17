@@ -28,5 +28,9 @@ public class ConfigurationPropertiesDemo {
      * 地址
      */
     private String remoteAddress;
+    /**
+     * 地址
+     */
+    private String phone;
 
 }
