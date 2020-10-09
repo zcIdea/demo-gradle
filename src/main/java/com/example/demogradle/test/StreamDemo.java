@@ -2,9 +2,11 @@ package com.example.demogradle.test;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @description: Java 8 API添加了一个新的抽象称为流Stream，可以让你以一种声明的方式处理数据。处理集合类
@@ -13,6 +15,53 @@ import java.util.stream.Collectors;
  */
 @Slf4j
 public class StreamDemo {
+
+    public void createStream(){
+
+        String[] arr=new String[]{"aaa","bbb","ccc","ddd"};
+        Stream<String> stream = Arrays.stream(arr);
+        stream.forEach(System.out::println);
+        stream.forEach(opt -> System.out.println(opt));
+
+        Stream<String> stringStream = Stream.of("1a", "2b", "3c", "4d");
+
+        List<String> list = new ArrayList<>();
+        list.add("武汉加油");
+        list.add("中国加油");
+        list.add("世界加油");
+
+        Stream<String> streamList = list.stream();
+
+    }
+
+    /**
+     * 串行流和并行流
+     * 串行流：一个线程串行处理所有数据
+     * 并发流：默认使用的是 ForkJoinPool.commonPool()线程池，开启多个线程处理每一项数据
+     */
+    public void parallelStream(){
+
+        List<String> list = new ArrayList<>();
+        list.add("武汉加油");
+        list.add("中国加油");
+        list.add("世界加油");
+
+
+        Stream<String> stream = list.stream();
+        stream.forEach(opt -> {
+            System.out.println("串行流：threadId="+Thread.currentThread().getId());
+            System.out.println(opt);
+        });
+
+        Stream<String> streamList = list.parallelStream();
+        streamList.forEach(opt -> {
+            System.out.println("并行流：threadId="+Thread.currentThread().getId());
+            System.out.println(opt);
+        });
+
+
+    }
+
 
     /**
      * stream()：将集合转换为流
@@ -59,7 +108,8 @@ public class StreamDemo {
     public static void main(String[] args) {
         StreamDemo streamDemo=new StreamDemo();
 //        streamDemo.arrayDemo();
-        streamDemo.listDemo();
+//        streamDemo.listDemo();
+        streamDemo.parallelStream();
     }
 
 

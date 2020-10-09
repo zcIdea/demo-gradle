@@ -25,6 +25,8 @@ dependencies {
 
     implementation 'com.alibaba:fastjson:1.2.70'
     implementation('commons-io:commons-io:2.6')
+    implementation('io.netty:netty-all:5.0.0.Alpha2')
+    implementation('com.squareup.okhttp3:okhttp:3.14.0')
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
